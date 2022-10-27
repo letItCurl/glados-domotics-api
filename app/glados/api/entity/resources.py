@@ -4,6 +4,9 @@ from flask_restful import Resource
 from glados.api.entity.serializers import EntitiesRequestSerializer, EntityResponseSerializer
 from glados.repositories.entities import get_entities
 
+# @TODO_CURRENT_PR: REMOVE
+# import sys
+# print("X", file=sys.stderr)
 
 class EntitiesAPI(Resource):
     def get(self):
