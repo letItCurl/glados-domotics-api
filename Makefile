@@ -13,7 +13,7 @@ logs:
 prod:
 	docker-compose -f docker-compose-prod.yml up -d
 
-test:
+tests:
 	docker-compose -f docker-compose-test.yml run --rm server coverage run -m pytest
 
 coverage:
