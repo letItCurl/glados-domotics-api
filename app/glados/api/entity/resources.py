@@ -8,6 +8,7 @@ from glados.repositories.entities import get_entities
 # import sys
 # print("X", file=sys.stderr)
 
+
 class EntitiesAPI(Resource):
     def get(self):
         request_serializer = EntitiesRequestSerializer()

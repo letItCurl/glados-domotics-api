@@ -97,6 +97,7 @@ def test_get_entities_with_type_filter(client, entities, mocker):
         }
     ]
 
+
 def test_get_entities_with_status_filter(client, entities, mocker):
     response = client.get("/entities?status=on")
 

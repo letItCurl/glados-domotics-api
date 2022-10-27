@@ -1,6 +1,8 @@
 from glados.models import Entity
 
+
 def get_entities(filters):
+
     query = Entity.query
 
     # @NOTE:
