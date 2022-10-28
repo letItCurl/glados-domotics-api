@@ -1,5 +1,6 @@
 import uuid
 import pytest
+import json
 
 from glados import constants
 from glados.models import Entity, Room
@@ -120,3 +121,16 @@ def test_get_entities_with_status_filter(client, entities, mocker):
             "created_at": mocker.ANY
         }
     ]
+
+def test_patch_entity(client, entities, mocker):
+    response = client.patch("/entities/00000000-0000-0000-0000-000000000002", data=json.dumps({"status": "off"}), headers={"Content-Type": "application/json"})
+
+    assert response.status_code == 200
+    assert response.json == {
+            "id": "00000000-0000-0000-0000-000000000002",
+            "name": "Lamp",
+            "type": "light",
+            "status": "off",
+            "value": "200",
+            "created_at": mocker.ANY
+        }
