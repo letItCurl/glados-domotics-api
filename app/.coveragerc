@@ -1,10 +1,12 @@
 [run]
 branch = False
 data_file = coverage/.coverage
+omit = glados/models/abc.py
 
 [report]
 fail_under = 85
 precision = 2
+omit = glados/models/abc.py
 
 [html]
 directory = coverage/html_coverage

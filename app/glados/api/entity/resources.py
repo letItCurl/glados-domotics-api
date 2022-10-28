@@ -27,8 +27,10 @@ class EntityAPI(Resource):
         # @NOTE:
         # `id` and `created_at` needs to be striped out for the request_serializer to work.
         # This could be possible to do with `marshmallow` but cannot find how.
-        del request.json['id']
-        del request.json['created_at']
+        if request.json.get('id'):
+            del request.json['id']
+        if request.json.get('created_at'):
+            del request.json['created_at']
 
         data = request_serializer.load(request.json)
         entity = update_entity(id, data)
