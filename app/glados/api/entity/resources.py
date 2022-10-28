@@ -18,3 +18,8 @@ class EntitiesAPI(Resource):
 
         serializer = EntityResponseSerializer(many=True)
         return serializer.dump(entities), 200
+
+class EntityAPI(Resource):
+    def patch(self, id):
+
+        return { 'TheCakeIsAlie': '...' }, 200
