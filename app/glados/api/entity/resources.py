@@ -4,10 +4,6 @@ from flask_restful import Resource
 from glados.api.entity.serializers import EntityRequestSerializer, EntitiesRequestSerializer, EntityResponseSerializer
 from glados.repositories.entities import get_entities, update_entity
 
-# @TODO_CURRENT_PR: REMOVE
-# import sys
-# print("X", file=sys.stderr)
-
 
 class EntitiesAPI(Resource):
     def get(self):
@@ -27,10 +23,13 @@ class EntityAPI(Resource):
         # @NOTE:
         # `id` and `created_at` needs to be striped out for the request_serializer to work.
         # This could be possible to do with `marshmallow` but cannot find how.
+        # Moreover, error validation should be added in the response so that the front can explain why a save would fail.
         if request.json.get('id'):
             del request.json['id']
         if request.json.get('created_at'):
             del request.json['created_at']
+        if request.json.get('name'):
+            request.json['name'].strip()
 
         data = request_serializer.load(request.json)
         entity = update_entity(id, data)

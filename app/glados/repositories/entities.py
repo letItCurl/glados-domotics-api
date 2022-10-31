@@ -52,8 +52,11 @@ def update_entity(id, data):
         if data.get('value'):
             new_entity.value = data.get('value')
 
-        entity.remove(commit=True)
-        new_entity.save(commit=True)
+        try:
+            entity.remove(commit=True)
+            new_entity.save(commit=True)
+        except Exception:
+            return False
 
         return new_entity
 
